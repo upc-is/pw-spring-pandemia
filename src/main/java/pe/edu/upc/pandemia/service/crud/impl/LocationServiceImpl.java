@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,34 +18,9 @@ public class LocationServiceImpl implements LocationService {
 	@Autowired
 	private LocationRepository locationRepository;
 	
-	@Transactional(readOnly = true)
 	@Override
-	public List<Location> getAll() throws Exception {
-		return locationRepository.findAll();
-	}
-
-	@Transactional(readOnly = true)
-	@Override
-	public Optional<Location> findById(Integer id) throws Exception {
-		return locationRepository.findById(id);
-	}
-
-	@Transactional
-	@Override
-	public Location create(Location entity) throws Exception {
-		return locationRepository.save(entity);
-	}
-
-	@Transactional
-	@Override
-	public Location update(Location entity) throws Exception {
-		return locationRepository.save(entity);
-	}
-
-	@Transactional
-	@Override
-	public void deleteById(Integer id) throws Exception {
-		locationRepository.deleteById(id);
+	public JpaRepository<Location, Integer> getRepository() {
+		return locationRepository;
 	}
 
 	@Transactional(readOnly = true)
@@ -58,5 +34,4 @@ public class LocationServiceImpl implements LocationService {
 	public List<Location> findByStateProvince(String stateProvince) throws Exception {
 		return locationRepository.findByStateProvince(stateProvince);
 	}
-
 }
