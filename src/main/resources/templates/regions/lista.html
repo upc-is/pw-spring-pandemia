@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>List of Regions</title>
+</head>
+<body>
+	<h1>List of Regions</h1>
+	
+	<table>
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Description</th>
+			</tr>		
+		</thead>
+		<tbody>
+			<tr th:each="region : ${regions}">
+				<td th:text="${region.id}">.</td>
+				<td th:text="${region.name}">.</td>
+			</tr>		
+		</tbody>
+	</table>
+	
+</body>
+</html>
