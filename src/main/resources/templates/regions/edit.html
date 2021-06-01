@@ -7,7 +7,7 @@
     <link th:href="@{/css/fontawesome.min.css}" rel="stylesheet">
     <link th:href="@{/css/solid.min.css}" rel="stylesheet">
 
-    <title>Hello, world!</title>
+    <title>Region Example</title>
   </head>
 <body>
 
@@ -15,13 +15,20 @@
 	
 	<div class="card" style="width: 40rem;">
 	  <div class="card-header">
-	    View Region
+	    Edit Region
 	  </div>
 	  <div class="card-body">
 	  	
-	  	
+	  	<form th:action="@{/regions/save}" th:object="${regionEdit}" method="post">
+		  <div class="mb-3">
+		    <label for="name" class="form-label">Name</label>
+		    <input type="text" class="form-control" th:field="*{name}" placeholder="Name of region" >
+		  </div>
 
-  		<a href="#" class="btn btn-primary"> <i class="fas fa-plus"></i> New</a>
+		  <button type="submit" class="btn btn-primary">Update</button>
+		</form>
+		<br>
+  		<a th:href="@{/regions}" class="btn btn-primary"> <i class="fas fa-angle-double-left"></i> Return</a>
 	  </div>
 	</div>
 
