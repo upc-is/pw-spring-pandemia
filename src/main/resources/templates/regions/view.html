@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/fontawesome.min.css}" rel="stylesheet">
+    <link th:href="@{/css/solid.min.css}" rel="stylesheet">
+
+    <title>Hello, world!</title>
+  </head>
+<body>
+
+	<h2>CRUD Example </h2>
+	
+	<div class="card" style="width: 40rem;">
+	  <div class="card-header">
+	    View Region
+	  </div>
+	  <div class="card-body">
+	  	<p>
+	  		Id: <span th:text="${region.id}"></span> <br>
+	  		Name: <span th:text="${region.name}"></span> <br>
+	  	</p>
+
+  		<a th:href="@{/regions}" class="btn btn-primary"> <i class="fas fa-angle-double-left"></i> Return</a>
+	  </div>
+	</div>
+
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
