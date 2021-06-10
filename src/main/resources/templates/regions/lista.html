@@ -1,15 +1,9 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
-    <link th:href="@{/css/fontawesome.min.css}" rel="stylesheet">
-    <link th:href="@{/css/solid.min.css}" rel="stylesheet">
-
-    <title>Hello, world!</title>
-  </head>
+<head th:replace="layout/layout :: head">
+</head>
 <body>
+	<header th:replace="layout/layout :: header"></header>
 
 	<h2>CRUD Example </h2>
 	
@@ -44,6 +38,7 @@
 	  </div>
 	</div>
 
+	<footer th:replace="layout/layout :: footer"></footer>
 	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>

@@ -9,12 +9,13 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "regions")
+@Table(name = "regions", indexes = { @Index(columnList = "region_name", name = "regions_index_name") })
 @SequenceGenerator(name = "sequenceRegion", sequenceName = "Regions_region_id_seq", initialValue = 5, allocationSize = 1)
 public class Region {
 	@Id

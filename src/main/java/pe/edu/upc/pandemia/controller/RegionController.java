@@ -29,6 +29,9 @@ public class RegionController {
 		try {
 			List<Region> regions = regionService.getAll();
 			model.addAttribute("regions", regions);
+			//-----------------
+			Region regionSearch = new Region();
+			model.addAttribute("regionSearch", regionSearch);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getMessage());
@@ -67,7 +70,7 @@ public class RegionController {
 		return "redirect:/regions";	// url
 	}
 	
-	@PostMapping("save")	// GET: /regions/save
+	@PostMapping("save")	// POST: /regions/save
 	public String saveEdit(Model model, @ModelAttribute("regionEdit") Region region) {
 		try {
 			Region regionReturn = regionService.update(region);
@@ -93,7 +96,7 @@ public class RegionController {
 		return "redirect:/regions";	// url
 	}
 	
-	@PostMapping("savenew")	// GET: /regions/savenew
+	@PostMapping("savenew")	// POST: /regions/savenew
 	public String saveNew(Model model, @ModelAttribute("regionNew") Region region) {
 		try {
 			Region regionReturn = regionService.create(region);

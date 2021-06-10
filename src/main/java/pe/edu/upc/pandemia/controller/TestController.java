@@ -28,4 +28,8 @@ public class TestController {
 	public String interno1() {
 		return "pagina";
 	}
+	@GetMapping("layout")
+	public String layout() {
+		return "layout/layout";
+	}
 }

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+</head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	
+	<main>
+	
+		<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+		  <ol class="breadcrumb">
+		    <li class="breadcrumb-item">Search</li>
+		    <li class="breadcrumb-item">Region</li>
+		    <li class="breadcrumb-item active" aria-current="page">Result for <span th:text="${regionSearch.name}"></span> </li>
+		  </ol>
+		</nav>
+
+		<h2>Result search:  </h2>
+		
+		<div class="row" style="margin:20px;">
+		  
+		  <div th:each="region : ${regionsFound}" class="col-sm-2">
+		    <div class="card">
+		      <div class="card-body">
+		        <h5 class="card-title" th:text="${region.name}">.</h5>
+		        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+		        <a href="#" class="btn btn-info">View Detail</a>
+		        <a th:href="@{/apply/register}" class="btn btn-success">Apply</a>
+		      </div>
+		    </div>
+		  </div>
+
+		</div>
+		
+		<div class="row" style="margin:20px;">
+			<div th:each="region : ${regionsFound}" class="card" style="margin:10px;">
+			  <div class="card-body">
+			    <h5 class="card-title" th:text="${region.name}">Special title treatment</h5>
+			    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+			    <a href="#" class="btn btn-primary">Go somewhere</a>
+			  </div>
+			</div>
+		</div>
+	<main >
+	
+		
+
+  	</main>
+	
+	</main>
+	<footer th:replace="layout/layout :: footer"></footer>
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
