@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -60,11 +61,11 @@ public class Employee {	// Upper Camel case
 	@Column(name = "commission_pct", columnDefinition = "DECIMAL(2,2)")
 	private Float commissionPct;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "manager_id", insertable = false, updatable = false)
 	private Employee manager;		// Relation Ship - consigo mismo
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "department_id", nullable = true)
 	private Department department;
 	
@@ -78,7 +79,7 @@ public class Employee {	// Upper Camel case
 	private List<Language> languages;
 	
 	// for Employee job(rol) Manager
-	@OneToOne(mappedBy = "manager", fetch = FetchType.EAGER)
+	@OneToOne(mappedBy = "manager", fetch = FetchType.LAZY)
 	private Department departmentManager;	
 	
 	@OneToMany(mappedBy = "manager", fetch = FetchType.LAZY)

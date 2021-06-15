@@ -1,10 +1,16 @@
 package pe.edu.upc.pandemia.model.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -24,14 +30,34 @@ public class User {
 	@Column(name = "enable")
 	private boolean enable;
 	
-	@OneToOne
+	// cascade = CascadeType.ALL, para que se actualice tambien el employee
+	// Corrección para que funcione el grabado de los usuarios
+	@OneToOne(cascade = CascadeType.ALL)
 	@MapsId
 	@JoinColumn(name = "id")
 	private Employee employee;
 	
-	// -- Constructor, Getter y Setter
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<Authority> authorities;
+	
 	public User() {
+		this.enable = true;
+		this.authorities = new ArrayList<>();
+	}
+	public User( String username, String password ) {
+		this.username = username;
+		this.password = password;
+		this.enable = true;
+		this.authorities = new ArrayList<>();
+	}
+	
+	// Agregar el ROLE o ACCESS al usuario
+	public void addAuthority( String auth ) {
+		Authority authority = new Authority();
+		authority.setAuthority( auth ) ;
+		authority.setUser( this );
 		
+		this.authorities.add( authority );
 	}
 
 	public Integer getId() {
