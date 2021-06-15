@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+				xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Login Page</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+<div class="form">
+    <p>Human Resource</p>
+    <form th:action="@{/signin}" method="post">
+        <input type="text" name="username" id="username" placeholder="username">
+        <input type="password" name="password" id="password" placeholder="password">
+        <button type="submit">login</button>
+        <p class="message">Not registered? <a href="#">Create an account</a></p>
+    </form>
+</div>
+</body>
+</html>

@@ -17,4 +17,9 @@ public class IndexController {
 		model.addAttribute("regionSearch", regionSearch);
 		return "index";
 	}
+	
+	@GetMapping("login")
+	public String login() {
+		return "login";
+	}
 }

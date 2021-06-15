@@ -58,7 +58,7 @@ public class User {
 		authority.setUser( this );
 		
 		this.authorities.add( authority );
-	}
+	}	
 
 	public Integer getId() {
 		return id;
@@ -98,6 +98,12 @@ public class User {
 
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
+	}
+	public List<Authority> getAuthorities() {
+		return authorities;
+	}
+	public void setAuthorities(List<Authority> authorities) {
+		this.authorities = authorities;
 	}
 	
 }
