@@ -60,9 +60,9 @@
 	        </li>
 	      </ul>
 	      
-	      <form class="d-flex" th:action="@{/search/regions}" th:object="${regionSearch}" method="get">
-	        <input sec:authorize="isAuthenticated()" class="form-control me-2" type="search" th:field="*{name}" placeholder="Search Region" aria-label="Search">
-	        <input sec:authorize="isAnonymous()" class="form-control me-2" type="search" th:field="*{name}" placeholder="Search Region" aria-label="Search" Disabled>
+	      <form class="d-flex" th:action="@{/search/employees}" th:object="${employeeSearch}" method="get">
+	        <input sec:authorize="isAuthenticated()" class="form-control me-2" type="search" th:field="*{lastName}" placeholder="Search Employee" aria-label="Search">
+	        <input sec:authorize="isAnonymous()" class="form-control me-2" type="search" th:field="*{lastName}" placeholder="Search Employee" aria-label="Search" Disabled>
 	        <button sec:authorize="isAuthenticated()" class="btn btn-warning" type="submit"><i class="fas fa-search"></i></button>
 	        <button sec:authorize="isAnonymous()" class="btn btn-warning" type="submit" Disabled><i class="fas fa-search"></i></button>
 	      </form>
