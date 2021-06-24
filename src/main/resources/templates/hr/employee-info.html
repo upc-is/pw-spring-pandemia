@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+</head>
+<body>
+<header th:replace="layout/layout :: header"></header>
+
+<main>
+
+	<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item">Human resource</li>
+	    <li class="breadcrumb-item">Employee</li>
+	    <li class="breadcrumb-item active" aria-current="page"> 
+	    	<span th:text="${employee.lastName}"></span> 
+	    </li>
+	  </ol>
+	</nav>
+
+	
+	<div class="card mb-3" style="max-width: 700px; margin-left:40px;">
+	  <div class="row g-0">
+	    <div class="col-md-6">
+	      <img th:src="@{/images/employee-320.jpg}" class="img-fluid rounded-start" alt="...">
+	    </div>
+	    <div class="col-md-6">
+	      <div class="card-body">
+	        <h5 class="card-title" th:text="${employee.lastName + ' ' + employee.firstName }">Card title</h5>
+	        <p class="card-text" >
+	        	<strong>E-mail:</strong> <span th:text="${employee.email}"></span>
+	        </p>
+	        <p class="card-text" >
+	        	<strong>Phone Number:</strong> <span th:text="${employee.phoneNumber}"></span>
+	        </p>
+	        <p class="card-text" >
+	        	<strong>Hire date:</strong> <span th:text="${employee.hireDate}"></span>
+	        </p>
+	        <p class="card-text" >
+	        	<strong>Job:</strong> <span th:text="${employee.job.title}"></span>
+	        </p>
+	        <p class="card-text" >
+	        	<strong>Department:</strong> <span th:text="${employee.department.name}"></span>
+	        </p>
+	        <p class="card-text" >
+	        	<strong>Salary:</strong> $ <span th:text="${employee.salary}"></span>
+	        </p>	
+	        <p class="card-text" >
+	        	<strong>Manager:</strong> <span th:text="${employee.manager.lastName + ' ' + employee.manager.firstName }"></span>
+	        </p>
+	        <p class="card-text" >
+	        	<strong>Languages:</strong> 
+	        	<ul>
+	        		<li th:each="language : ${employee.languages}"><span th:text="${language.name}"></span> </li>
+	        	</ul>
+	        </p>
+	        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+	        <a th:href="@{'/human-resource/add-language/' + ${employee.id}}" class="btn btn-primary">
+	        	<i class="fas fa-language"></i> Add language
+	        </a>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+
+
+</main>
+<footer th:replace="layout/layout :: footer"></footer>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

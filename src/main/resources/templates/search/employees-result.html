@@ -22,14 +22,18 @@
 	    <div class="card border-success">
 	      <img th:src="@{/images/employee.jpg}" class="card-img-top" alt="...">
 	      <div class="card-body">
-	        <h5 class="card-title" th:text="${employee.lastName + ' ' + employee.firstName }">Card title</h5>
+	        <a th:href="@{'/human-resource/employee/' + ${employee.id}}" style="text-decoration:none;">
+	        	<h5 class="card-title" th:text="${employee.lastName + ' ' + employee.firstName }">Card title</h5>
+	        </a>
 	        <p class="card-text">
-	        	Lorem
+	        	<strong>Job:</strong> <span th:text="${employee.job.title}"></span> <br>
+	        	<strong>Department:</strong> <span th:text="${employee.department.name}"></span> <br>	        		        	
 	        </p>
-	        <a href="#" class="btn btn-primary">Go somewhere</a>
+	        <a th:href="@{'/human-resource/employee/' + ${employee.id}}" class="btn btn-info"><i class="fas fa-address-book"></i> Info</a>
+	        <a href="#" class="btn btn-success"><i class="fas fa-medal"></i> Move up</a>
 	      </div>
 	      <div class="card-footer">
-		    <small class="text-muted">Last updated 3 mins ago</small>
+		    <small class="text-muted">Hire date: <span th:text="${employee.hireDate}"></span></small>
 		  </div>
 	    </div>
 	  </div>
